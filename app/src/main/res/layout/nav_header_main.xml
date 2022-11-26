@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/llProfileContainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/alpha_white_gradient"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1"
+        >
+        <LinearLayout
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:background="@drawable/circle"
+            android:gravity="center">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imageView"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:contentDescription="@string/nav_header_desc"
+                android:src="@drawable/compas" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/mediumMargin"
+            android:gravity="center_horizontal|center_vertical">
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/nav_header_vertical_spacing"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/nav_header_title"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+                android:textColor="@color/white"
+                />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="match_parent"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_height="wrap_content"
+                android:text="@string/nav_header_subtitle"
+                android:textColor="@color/white"/>
+
+            <TextView
+                android:id="@+id/tvMobile"
+                android:layout_width="match_parent"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

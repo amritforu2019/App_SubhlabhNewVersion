@@ -1,0 +1,305 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/drawerWidthSize"
+    android:layout_height="match_parent"
+    android:layout_gravity="start">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/light_grey"
+        android:orientation="vertical">
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark">
+
+            <include layout="@layout/nav_header_main" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#333" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/white">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+
+                <LinearLayout
+                    android:id="@+id/menu_student"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_student_dashboard"
+                        android:drawableLeft="@drawable/icon_dashboard"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:visibility="gone"
+                    android:id="@+id/menu_teacher"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_teacher_dashboard"
+                        />
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/darkgrey"
+                    android:layout_margin="5dp"></View>
+
+                <LinearLayout
+                    android:id="@+id/menu_home"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_home"
+                        android:drawableLeft="@drawable/icon_home"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        
+                        android:gravity="center_vertical"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_my_batches"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_gallery"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_all_courses"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_all_courses"
+                        android:drawableLeft="@drawable/icon_courses"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_all_classes"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_all_classes"
+                        android:drawableLeft="@drawable/icon_classes"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_pricing"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_slideshow"
+                        android:drawableLeft="@drawable/icon_pricing"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_about"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_about"
+                        android:drawableLeft="@drawable/icon_about"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_careers"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:visibility="gone">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_career"
+                        android:drawableLeft="@drawable/icon_career"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_terms_and_condition"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_terms"
+                        android:drawableLeft="@drawable/icon_terms_condition"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_privacy_policy"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_privacy"
+                        android:drawableLeft="@drawable/icon_privacy_policy"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_legal"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_legal"
+                        android:drawableLeft="@drawable/icon_legal"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_contact"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_contact"
+                        android:drawableLeft="@drawable/icon_contact_us"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_share"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_share"
+                        android:drawableLeft="@drawable/ic_share_icon"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_logout"
+                    style="@style/sideMenuLayoutStyle"
+
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:text="@string/menu_logout"
+                        android:drawableLeft="@drawable/icon_logout_exit"
+                        android:drawablePadding="@dimen/mediumPadding"
+                        android:gravity="center_vertical"
+                        />
+                </LinearLayout>
+
+
+
+                <TextView
+                    style="@style/sideTitleStyle"
+                    android:textSize="12sp"
+                    android:id="@+id/menu_app_version"
+                    android:textColor="@color/light_black"
+                    android:layout_marginTop="@dimen/largeMargin"
+                    android:text="App Version"
+                    android:gravity="center_vertical|center_horizontal"
+
+
+                    android:padding="@dimen/smallPadding"
+                    />
+
+                <LinearLayout
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/menu_developed_by"
+
+                    android:clickable="true">
+
+                    <TextView
+                        style="@style/sideTitleStyle"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        android:textColor="@color/light_black"
+                        android:layout_marginTop="@dimen/largeMargin"
+                        android:text="Developed by Friendz IT Solutions"
+                         android:gravity="center_vertical|center_horizontal"
+
+
+                        android:padding="@dimen/smallPadding"
+                        />
+
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+</RelativeLayout>

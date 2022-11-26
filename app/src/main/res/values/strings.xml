@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">Shubhlabh Vastu</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">My Batches</string>
+    <string name="menu_all_courses">Courses</string>
+    <string name="menu_all_classes">All Classes</string>
+    <string name="menu_slideshow">Pricing</string>
+    <string name="menu_career">Career</string>
+    <string name="menu_about">About Us</string>
+    <string name="menu_terms">Terms &amp; Conditions</string>
+    <string name="menu_privacy">Privacy Policy</string>
+    <string name="menu_legal">Legal</string>
+    <string name="menu_contact">Contact Us</string>
+    <string name="menu_share">Share App</string>
+    <string name="menu_student_dashboard">Dashboard</string>
+    <string name="menu_teacher_dashboard">Teachers Dashboard</string>
+    <string name="menu_logout">Logout</string>
+    <string name="menu_test_series">TestSeries</string>
+    <string name="menu_live_class">Live Class</string>
+    <string name="menu_feed">Feed</string>
+
+    <string name="accountablity1">- Collaborate with the Marketing Manager to deliver effective, direct response e-mail designs for marketing campaigns</string>
+    <string name="accountablity2">- Work with stakeholders from sales and marketing to design print materials, including sales brochures and mailers</string>
+    <string name="accountablity3">- Work closely with the CMO and in-house design team, taking direction on our new website design for corporate and product sites, including writing HTML and CSS</string>
+    <string name="accountablity4">- Work closely with the CMO and in-house design team to compile the corporate and product family branding style guides (icons, color palettes, etc)</string>
+    <string name="accountablity5">- Develop design assets for new product launches, including screenshots and icons for app store listings</string>
+    <string name="accountablity6">- Design on request for various needs across the company, including graphics for e-books, online stores, social accounts, presentations, ads, collateral, etc.</string>
+    <string name="skills1">- Ability to write code – HTML &amp; CSS (SCSS flavor of SASS preferred when writing CSS)</string>
+    <string name="skills2">- Proficient in Photoshop, Illustrator, bonus points for familiarity with Sketch (Sketch is our preferred concepting tool)</string>
+    <string name="skills3">- Cross-browser and platform testing as standard practice</string>
+    <string name="skills4">- Experience using Invision a plus</string>
+    <string name="skills5">- Experience in video production a plus or, at a minimum, a willingness to learn</string>
+    <string name="experience1">- Advanced degree or equivalent experience in graphic and web design</string>
+    <string name="experience2">- 3 or more years of professional design experience</string>
+    <string name="experience3">- Direct response email experience</string>
+    <string name="experience4">- Ecommerce website design experience</string>
+    <string name="experience5">- Familiarity with mobile and web apps preferred</string>
+    <string name="experience6">- Excellent communication skills, most notably a demonstrated ability to solicit and address creative and design feedback</string>
+    <string name="experience7">- Must be able to work under pressure and meet deadlines while maintaining a positive attitude and providing exemplary customer service</string>
+    <string name="experience8">- Ability to work independently and to carry out assignments to completion within parameters of instructions given, prescribed routines, and standard accepted practices</string>
+    <string name="email_mobile_no">Email / Mobile</string>
+    <string name="go_to_settings">Go to setting</string>
+
+    <string name="dialog_permission_title">Grant Permissions</string>
+    <string name="dialog_permission_message">This app needs permission to use this feature. You can grant them in app settings.</string>
+    <string name="default_notification_channel_id">968126730327</string>
+</resources>
