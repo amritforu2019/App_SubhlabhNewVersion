@@ -2,10 +2,9 @@ package com.vastu.shubhlabhvastu.Model;
 
 public class ScreenItem {
 
-    String Title,Description;
-    int ScreenImg;
+    String Title,Description,ScreenImg;
 
-    public ScreenItem(String title, String description, int screenImg) {
+    public ScreenItem(String title, String description, String screenImg) {
         Title = title;
         Description = description;
         ScreenImg = screenImg;
@@ -19,7 +18,7 @@ public class ScreenItem {
         Description = description;
     }
 
-    public void setScreenImg(int screenImg) {
+    public void setScreenImg(String screenImg) {
         ScreenImg = screenImg;
     }
 
@@ -31,7 +30,7 @@ public class ScreenItem {
         return Description;
     }
 
-    public int getScreenImg() {
+    public String  getScreenImg() {
         return ScreenImg;
     }
 }

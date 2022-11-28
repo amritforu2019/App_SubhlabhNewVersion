@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
+import com.bumptech.glide.Glide;
 import com.vastu.shubhlabhvastu.Model.ScreenItem;
 import com.vastu.shubhlabhvastu.R;
 
@@ -40,7 +41,9 @@ public class IntroViewPagerAdapter extends PagerAdapter {
 
         title.setText(mListScreen.get(position).getTitle());
         description.setText(mListScreen.get(position).getDescription());
-        imgSlide.setImageResource(mListScreen.get(position).getScreenImg());
+        //imgSlide.setImageURI(mListScreen.get(position).getScreenImg());
+        Glide.with(mContext).load(mListScreen.get(position).getScreenImg()).placeholder(R.drawable.loading_img).error(R.drawable.no_image).into(imgSlide);
+
 
         container.addView(layoutScreen);
 
