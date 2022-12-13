@@ -4,9 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.vastu.shubhlabhvastu.BaseActivity;
 import com.vastu.shubhlabhvastu.R;
 
-public class Home extends AppCompatActivity {
+public class Home extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

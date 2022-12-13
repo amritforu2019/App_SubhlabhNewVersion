@@ -25,6 +25,7 @@ import com.vastu.shubhlabhvastu.BaseActivity;
 import com.vastu.shubhlabhvastu.Model.ScreenItem;
 import com.vastu.shubhlabhvastu.R;
 import com.vastu.shubhlabhvastu.Task.API;
+import com.vastu.shubhlabhvastu.Task.CommonTask;
 import com.vastu.shubhlabhvastu.Task.ToastType;
 import com.vastu.shubhlabhvastu.Task.Toasts;
 
@@ -65,105 +66,57 @@ public class Intro extends BaseActivity {
 
 
         // fill list screen
-
         getIntroData();
 
 
-
         // next button click Listner
-
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 position = screenPager.getCurrentItem();
                 if (position < mList.size()) {
-
                     position++;
                     screenPager.setCurrentItem(position);
-
-
                 }
-
                 if (position == mList.size()-1) { // when we rech to the last screen
-
                     // TODO : show the GETSTARTED Button and hide the indicator and the next button
-
                     loaddLastScreen();
-
-
                 }
-
-
-
             }
         });
 
         // tablayout add change listener
-
-
         tabIndicator.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
-
                 if (tab.getPosition() == mList.size()-1) {
-
                     loaddLastScreen();
-
                 }
-
-
             }
-
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
-
             }
-
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
             }
         });
 
 
 
         // Get Started button click listener
-
-        btnGetStarted.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-
-                //open main activity
-
-                Intent mainActivity = new Intent(getApplicationContext(),Home.class);
-                startActivity(mainActivity);
-                // also we need to save a boolean value to storage so next time when the user run the app
-                // we could know that he is already checked the intro screen activity
-                // i'm going to use shared preferences to that process
-                //savePrefsData();
-                finish();
-
-
-
-            }
-        });
+        btnGetStarted.setOnClickListener(v -> CommonTask.redirectFinishActivity(this, Home.class));
 
         // skip button click listener
-
         tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 screenPager.setCurrentItem(mList.size());
             }
         });
-
     }
 
     // show the GETSTARTED Button and hide the indicator and the next button
     private void loaddLastScreen() {
-
         btnNext.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
         tvSkip.setVisibility(View.INVISIBLE);
@@ -171,9 +124,6 @@ public class Intro extends BaseActivity {
         // TODO : ADD an animation the getstarted button
         // setup animation
         btnGetStarted.setAnimation(btnAnim);
-
-
-
     }
 
 

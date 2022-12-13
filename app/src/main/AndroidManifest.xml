@@ -16,8 +16,11 @@
         android:theme="@style/Theme.ShubhlabhVastu"
         tools:targetApi="31">
         <activity
-            android:name=".Home"
-            android:exported="false" />
+            android:name=".Activity.Home"
+            android:exported="false"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
         <activity
             android:name=".Activity.Intro"
             android:exported="false"
