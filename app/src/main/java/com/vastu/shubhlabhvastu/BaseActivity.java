@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 
 import com.bumptech.glide.Glide;
+import com.vastu.shubhlabhvastu.Activity.Home;
+import com.vastu.shubhlabhvastu.Activity.MyAccount;
+import com.vastu.shubhlabhvastu.Activity.SignIn;
 import com.vastu.shubhlabhvastu.Connection.CheckConnection;
 import com.vastu.shubhlabhvastu.Session.Session;
 import com.vastu.shubhlabhvastu.Task.CommonTask;
@@ -50,8 +54,6 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManagerFactory;
 
-import de.hdodenhof.circleimageview.CircleImageView;
-
 public class BaseActivity extends AppCompatActivity {
 
     public Toolbar toolbar;
@@ -60,9 +62,12 @@ public class BaseActivity extends AppCompatActivity {
     private LinearLayout llProfileContainer;
     private SharedPreferences pref;
     private Context context;
-    private TextView tvName, tvEmail,tvMobile,menu_app_version;
-    public CircleImageView imageView;
-    public Boolean test_alert=true;
+    private TextView tvName, tvEmail,tvMobile,menu_app_version,txt_welcome,txt_name;
+    //public CircleImageView imageView;
+    public Boolean test_alert=false;
+    LinearLayout contentView;
+
+    static final float END_SCALE = 0.1f;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,25 +78,33 @@ public class BaseActivity extends AppCompatActivity {
 
         pref = PreferenceManager.getDefaultSharedPreferences(context);
 
+        contentView = findViewById(R.id.content);
 
 
 
-        tvName = findViewById(R.id.tvName);
+
+         txt_welcome = findViewById(R.id.txt_welcome);
+         txt_name = findViewById(R.id.txt_name);
+         tvName = findViewById(R.id.tvName);
         tvEmail = findViewById(R.id.tvEmail);
         tvMobile = findViewById(R.id.tvMobile);
-        imageView = findViewById(R.id.imageView);
+       // imageView = findViewById(R.id.imageView);
         llProfileContainer = findViewById(R.id.llProfileContainer);
-        menu_app_version = findViewById(R.id.menu_app_version);
-        menu_app_version.setText("App Version "+ BuildConfig.VERSION_NAME);
+         menu_app_version = findViewById(R.id.menu_app_version);
+         menu_app_version.setText("App Version "+ BuildConfig.VERSION_NAME);
 
-        if (!Session.getImage(pref).equals(""))
-            Glide.with(context).load(Session.getImage(pref)).placeholder(R.drawable.compas).into(imageView);
+       /* if (!Session.getImage(pref).equals(""))
+            Glide.with(context).load(Session.getImage(pref)).placeholder(R.drawable.compas).into(imageView);*/
 
+        if (!Session.getUserName(pref).equals("")) txt_welcome.setText( "Welcome Back !");
+        else txt_welcome.setText( "Welcome Guest !");
+        if (!Session.getUserName(pref).equals("")) txt_name.setText( Session.getUserName(pref).toUpperCase());
+        else txt_name.setText("Hi kindly login to view all pages..");
         if (!Session.getUserName(pref).equals("")) tvName.setText( Session.getUserName(pref).toUpperCase());
         if (!Session.getUserEmail(pref).equals("")) tvEmail.setText(Session.getUserEmail(pref));
         if (!Session.getUserMobile(pref).equals("")) tvMobile.setText("+91-"+Session.getUserMobile(pref));
 
-       // llProfileContainer.setOnClickListener(v -> replaceActivity(StudentDashboard.class));
+         // llProfileContainer.setOnClickListener(v -> replaceActivity(StudentDashboard.class));
 
         initToolbar();
 
@@ -103,19 +116,41 @@ public class BaseActivity extends AppCompatActivity {
     }
 
     private void menuClickListener() {
-        /*findViewById(R.id.menu_home).setOnClickListener(v -> {
-            replaceActivity(Home.class);
+
+        if (Session.getStudentId(pref).equals("")) {
+            findViewById(R.id.menu_logout).setVisibility(View.GONE);
+            findViewById(R.id.menu_login).setVisibility(View.VISIBLE);
+        }
+        findViewById(R.id.menu_login).setOnClickListener(v -> {
+              replaceActivity(SignIn.class);
         });
-        findViewById(R.id.menu_my_batches).setOnClickListener(v -> {
-            //replaceActivity(MyBatches.class);
+
+        findViewById(R.id.menu_home).setOnClickListener(v -> {
+            if (Session.getStudentId(pref).equals(""))   { replaceActivity(SignIn.class); Toasts.makeText(context, "Kindly signup / login first", ToastType.ERROR); }
+            else replaceActivity(MyAccount.class);
         });
-        findViewById(R.id.menu_all_courses).setOnClickListener(v -> {
-            replaceActivity(MyAllCourses.class);
+        findViewById(R.id.menu_order).setOnClickListener(v -> {
+            if (Session.getStudentId(pref).equals(""))   { replaceActivity(SignIn.class); Toasts.makeText(context, "Kindly signup / login first", ToastType.ERROR); }
+            else replaceActivity(MyAccount.class);
         });
-        findViewById(R.id.menu_all_classes).setOnClickListener(v -> {
-            replaceActivity(MyAllClasses.class);
+        findViewById(R.id.menu_rate).setOnClickListener(v -> {
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse("https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID));
+            startActivity(i);
         });
-        findViewById(R.id.menu_pricing).setOnClickListener(v -> {
+        findViewById(R.id.menu_refer).setOnClickListener(v -> {
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT,
+                    "Hey check out "+ context.getString(R.string.app_name)+" app at: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
+            sendIntent.setType("text/plain");
+            startActivity(sendIntent);
+        });
+        findViewById(R.id.menu_support).setOnClickListener(v -> {
+            if (Session.getStudentId(pref).equals(""))   { replaceActivity(SignIn.class); Toasts.makeText(context, "Kindly signup / login first", ToastType.ERROR); }
+            else replaceActivity(MyAccount.class);
+        });
+       /* findViewById(R.id.menu_pricing).setOnClickListener(v -> {
             replaceActivity(Pricing.class);
         });
         //findViewById(R.id.menu_pricing).setVisibility(View.GONE);
@@ -146,20 +181,20 @@ public class BaseActivity extends AppCompatActivity {
         findViewById(R.id.menu_about).setOnClickListener(v -> {
             replaceActivity(About.class);
         });*/
-        findViewById(R.id.menu_share).setOnClickListener(v -> {
+      /*  findViewById(R.id.menu_share).setOnClickListener(v -> {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT,
                     "Hey check out Anywhere Learning app at: https://play.google.com/store/apps/details?id=" + BuildConfig.APPLICATION_ID);
             sendIntent.setType("text/plain");
             startActivity(sendIntent);
-        });
-        findViewById(R.id.menu_developed_by).setOnClickListener(v -> {
+        });*/
+       /* findViewById(R.id.menu_developed_by).setOnClickListener(v -> {
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse("https://www.friendzitsolutions.biz/"));
             startActivity(i);
-        });
-        findViewById(R.id.menu_logout).setOnClickListener(v -> {
+        });*/
+       findViewById(R.id.menu_logout).setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
             builder.setTitle("Warning")
                     .setMessage("Are you sure to logout... Click yes for Logout")
@@ -191,8 +226,8 @@ public class BaseActivity extends AppCompatActivity {
 
     private void addRippleEffect() {
        /* if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {*/
-            findViewById(R.id.menu_home).setBackground(getDrawable(R.drawable.ripple));
-            findViewById(R.id.menu_my_batches).setBackground(getDrawable(R.drawable.ripple));
+           // findViewById(R.id.menu_home).setBackground(getDrawable(R.drawable.ripple));
+         /*   findViewById(R.id.menu_my_batches).setBackground(getDrawable(R.drawable.ripple));
             findViewById(R.id.menu_all_courses).setBackground(getDrawable(R.drawable.ripple));
             findViewById(R.id.menu_all_classes).setBackground(getDrawable(R.drawable.ripple));
             findViewById(R.id.menu_pricing).setBackground(getDrawable(R.drawable.ripple));
@@ -204,8 +239,48 @@ public class BaseActivity extends AppCompatActivity {
             findViewById(R.id.menu_student).setBackground(getDrawable(R.drawable.ripple));
             findViewById(R.id.menu_teacher).setBackground(getDrawable(R.drawable.ripple));
             findViewById(R.id.menu_about).setBackground(getDrawable(R.drawable.ripple));
-            findViewById(R.id.menu_logout).setBackground(getDrawable(R.drawable.ripple));
+            findViewById(R.id.menu_logout).setBackground(getDrawable(R.drawable.ripple));*/
        // }
+    }
+
+    private void animateNavigationDrawer() {
+
+        //Add any color or remove it to use the default one!
+
+        //To make it transparent use Color.Transparent in side setScrimColor();
+
+        //drawerLayout.setScrimColor(Color.TRANSPARENT);
+
+        drawerLayout.addDrawerListener(new DrawerLayout.SimpleDrawerListener() {
+
+            @Override
+
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+
+                // Scale the View based on current slide offset
+
+                final float diffScaledOffset = slideOffset * (1 - END_SCALE);
+
+                final float offsetScale = 1 - diffScaledOffset;
+
+                contentView.setScaleX(offsetScale);
+
+                contentView.setScaleY(offsetScale);
+
+                // Translate the View, accounting for the scaled width
+
+                final float xOffset = drawerView.getWidth() * slideOffset;
+
+                final float xOffsetDiff = contentView.getWidth() * diffScaledOffset / 2;
+
+                final float xTranslation = xOffset - xOffsetDiff;
+
+                contentView.setTranslationX(xTranslation);
+
+            }
+
+        });
+
     }
 
     private void drawerAction() {
@@ -213,13 +288,16 @@ public class BaseActivity extends AppCompatActivity {
         toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
+
+
+        animateNavigationDrawer();
     }
 
     private void initToolbar() {
         toolbar = findViewById(R.id.toolbar);
         toolbar.setTitle(getString(R.string.app_name));
         toolbar.setNavigationIcon(R.drawable.ic_menu);
-        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.white));
+        toolbar.setTitleTextColor(ContextCompat.getColor(this, R.color.black));
         setSupportActionBar(toolbar);
     }
 
@@ -234,7 +312,7 @@ public class BaseActivity extends AppCompatActivity {
 
         int id = item.getItemId();
 
-        if (id == R.id.logout) {
+       /* if (id == R.id.logout) {
             AlertDialog.Builder builder = new AlertDialog.Builder(BaseActivity.this);
             builder.setTitle("Warning")
                     .setMessage("Are you sure to logout... Click yes for Logout")
@@ -252,7 +330,7 @@ public class BaseActivity extends AppCompatActivity {
                     });
             AlertDialog alertDialog = builder.create();
             alertDialog.show();
-        }
+        }*/
 
         return super.onOptionsItemSelected(item);
     }
@@ -394,7 +472,13 @@ public class BaseActivity extends AppCompatActivity {
         return null;
     }
 
-
+    private void validate_login()
+    {
+        if (Session.getStudentId(pref).equals("")) {
+            Toasts.makeText(context, "Session Expired !!! Kindly Login...", ToastType.ERROR);
+            CommonTask.redirectFinishActivity(BaseActivity.this, SignIn.class);
+        }
+    }
 
 
 }

@@ -24,7 +24,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/screen_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="480dp"
+        android:layout_height="520dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_margin="5dp"
@@ -35,26 +35,66 @@
         android:layout_height="wrap_content"
         app:tabIndicatorHeight="0dp"
         android:layout_gravity="center"
-        app:layout_constraintBottom_toTopOf="@+id/btn_next"
+        app:layout_constraintBottom_toTopOf="@+id/llbutton"
         app:tabBackground="@drawable/indicator_selector">
     </com.google.android.material.tabs.TabLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        android:id="@+id/llbutton"
+        >
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="left"
+            android:layout_weight="1"
+            >
+            <Button
+                android:id="@+id/btn_prev"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+
+                android:visibility="invisible"
+                android:text="Back"
+                android:textAlignment="center"
+                android:layout_margin="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/black" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right"
+            android:layout_weight="1"
+            >
+            <Button
+                android:id="@+id/btn_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+                android:drawableRight="@drawable/ic_arrow_right_circle"
+                android:text="Next"
+                android:textAlignment="center"
+                android:layout_margin="5dp"
+                android:textSize="20dp"
+                android:textColor="@color/button_color" />
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="right"
         >
-        <Button
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/btn_gradient_style"
-            android:drawableRight="@drawable/ic_arrow_forward_black_24dp"
-            android:text="Next"
-            android:textAlignment="center"
-            android:layout_margin="5dp"
-            android:textColor="@color/white" />
+
 
     </LinearLayout>
 
@@ -65,10 +105,11 @@
         android:id="@+id/btn_get_started"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/btn_gradient_style"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:text="Continue"
+        android:textSize="20dp"
         android:layout_gravity="center"
-        android:textColor="@color/colorPrimary" />
+        android:textColor="@color/button_color" />
 
 
 

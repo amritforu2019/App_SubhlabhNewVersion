@@ -9,7 +9,7 @@
         android:background="@color/light_grey"
         android:orientation="vertical">
 
-        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -22,238 +22,319 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#333" />
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/primary_text" />
 
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            >
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
-
-
-
-                <LinearLayout
-                    android:id="@+id/menu_student"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_student_dashboard"
-                        android:drawableLeft="@drawable/icon_dashboard"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:visibility="gone"
-                    android:id="@+id/menu_teacher"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_teacher_dashboard"
-                        />
-                </LinearLayout>
-
-
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/darkgrey"
-                    android:layout_margin="5dp"></View>
-
                 <LinearLayout
                     android:id="@+id/menu_home"
                     style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="11">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_home"
-                        android:drawableLeft="@drawable/icon_home"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        
-                        android:gravity="center_vertical"/>
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:drawableLeft="@drawable/ic_outline_account_circle_24"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            android:text="@string/menu_account" />
+
+                        <TextView
+                        style="@style/sideSubTitleStyle"
+                         android:text="@string/menu_sub_account"
+                         android:gravity="center_vertical"
+                        />
                 </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
+
+                        </ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/primary_text" />
 
                 <LinearLayout
-                    android:id="@+id/menu_my_batches"
+                    android:id="@+id/menu_order"
                     style="@style/sideMenuLayoutStyle"
                     android:clickable="true"
-                    android:visibility="gone">
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_transaction"
+                            android:drawableLeft="@drawable/menu1"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
+                        <TextView
+                            style="@style/sideSubTitleStyle"
+                            android:text="@string/menu_sub_transaction"
+                            android:gravity="center_vertical"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_gallery"
-                        />
+                        </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/primary_text" />
 
                 <LinearLayout
-                    android:id="@+id/menu_all_courses"
+                    android:id="@+id/menu_rate"
                     style="@style/sideMenuLayoutStyle"
                     android:clickable="true"
-                    android:visibility="gone">
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_rate"
+                            android:drawableLeft="@drawable/menu5"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
+                        <TextView
+                            style="@style/sideSubTitleStyle"
+                            android:text="@string/menu_sub_rate"
+                            android:gravity="center_vertical"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_all_courses"
-                        android:drawableLeft="@drawable/icon_courses"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
+                        </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/primary_text" />
 
                 <LinearLayout
-                    android:id="@+id/menu_all_classes"
+                    android:id="@+id/menu_support"
                     style="@style/sideMenuLayoutStyle"
                     android:clickable="true"
-                    android:visibility="gone">
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_support"
+                            android:drawableLeft="@drawable/menu4"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
+                        <TextView
+                            style="@style/sideSubTitleStyle"
+                            android:text="@string/menu_sub_support"
+                            android:gravity="center_vertical"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_all_classes"
-                        android:drawableLeft="@drawable/icon_classes"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
+                        </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/primary_text" />
 
                 <LinearLayout
-                    android:id="@+id/menu_pricing"
+                    android:id="@+id/menu_refer"
                     style="@style/sideMenuLayoutStyle"
                     android:clickable="true"
-                    android:visibility="gone">
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_refer"
+                            android:drawableLeft="@drawable/menu2"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
+                        <TextView
+                            style="@style/sideSubTitleStyle"
+                            android:text="@string/menu_sub_refer"
+                            android:gravity="center_vertical"
+                            />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_slideshow"
-                        android:drawableLeft="@drawable/icon_pricing"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
+                        </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@color/primary_text" />
 
-                <LinearLayout
-                    android:id="@+id/menu_about"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_about"
-                        android:drawableLeft="@drawable/icon_about"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_careers"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true"
-                    android:visibility="gone">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_career"
-                        android:drawableLeft="@drawable/icon_career"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_terms_and_condition"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_terms"
-                        android:drawableLeft="@drawable/icon_terms_condition"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_privacy_policy"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_privacy"
-                        android:drawableLeft="@drawable/icon_privacy_policy"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_legal"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_legal"
-                        android:drawableLeft="@drawable/icon_legal"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_contact"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_contact"
-                        android:drawableLeft="@drawable/icon_contact_us"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/menu_share"
-                    style="@style/sideMenuLayoutStyle"
-                    android:clickable="true">
-
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_share"
-                        android:drawableLeft="@drawable/ic_share_icon"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
-                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/menu_logout"
                     style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_logout"
+                            android:drawableLeft="@drawable/ic_baseline_logout_24"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
 
-                    android:clickable="true">
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:text="@string/menu_logout"
-                        android:drawableLeft="@drawable/icon_logout_exit"
-                        android:drawablePadding="@dimen/mediumPadding"
-                        android:gravity="center_vertical"
-                        />
+                        </ImageView>
+                    </LinearLayout>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/menu_login"
+                    style="@style/sideMenuLayoutStyle"
+                    android:clickable="true"
+                    android:orientation="horizontal"
+                    android:weightSum="12"
+                    android:visibility="gone"
+                    >
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="11">
+                        <TextView
+                            style="@style/sideTitleStyle"
+                            android:text="@string/menu_login_register"
+                            android:drawableLeft="@drawable/ic_baseline_login_24"
+                            android:drawablePadding="@dimen/mediumPadding"
+                            android:gravity="center_vertical"
+                            />
+
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="1">
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/arrow_right_dark">
+
+                        </ImageView>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
 
 
 
@@ -274,22 +355,10 @@
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/menu_developed_by"
 
                     android:clickable="true">
 
-                    <TextView
-                        style="@style/sideTitleStyle"
-                        android:textSize="12sp"
-                        android:visibility="gone"
-                        android:textColor="@color/light_black"
-                        android:layout_marginTop="@dimen/largeMargin"
-                        android:text="Developed by Friendz IT Solutions"
-                         android:gravity="center_vertical|center_horizontal"
 
-
-                        android:padding="@dimen/smallPadding"
-                        />
 
 
                 </LinearLayout>

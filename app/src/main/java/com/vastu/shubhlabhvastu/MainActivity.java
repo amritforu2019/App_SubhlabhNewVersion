@@ -69,6 +69,7 @@ public class MainActivity extends BaseActivity {
 
     }
 
+    @SuppressLint("SuspiciousIndentation")
     private void validate_app_version()
     {
         Volley.newRequestQueue(context, new HurlStack(null, getSocketFactory())).add(new StringRequest(GET, API.COMMON_APP_VERSION, responses ->
