@@ -69,6 +69,7 @@ public class BaseActivity extends AppCompatActivity {
 
     static final float END_SCALE = 0.1f;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,7 +118,7 @@ public class BaseActivity extends AppCompatActivity {
 
     private void menuClickListener() {
 
-        if (Session.getStudentId(pref).equals("")) {
+        if (!Session.getIsSession(pref)) {
             findViewById(R.id.menu_logout).setVisibility(View.GONE);
             findViewById(R.id.menu_login).setVisibility(View.VISIBLE);
         }
@@ -221,7 +222,7 @@ public class BaseActivity extends AppCompatActivity {
 
 
 
-        CommonTask.redirectActivity(BaseActivity.this, classs);
+        CommonTask.redirectFinishActivity(BaseActivity.this, classs);
     }
 
     private void addRippleEffect() {
@@ -368,7 +369,7 @@ public class BaseActivity extends AppCompatActivity {
         dialogInterface.dismiss();
         Toasts.makeText(context, "Logout successfully !!!", ToastType.SUCCESS);
         Session.destroySession(pref);
-        //CommonTask.redirectFinishActivity(BaseActivity.this, Choose.class);
+        CommonTask.redirectFinishActivity(BaseActivity.this, SignIn.class);
     }
 
     @Override

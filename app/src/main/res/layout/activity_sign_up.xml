@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Activity.SignUp"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_register"
+            android:scaleType="centerCrop"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_linear_bg"
+            android:padding="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Welcome!"
+                    android:textColor="@color/white"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Join Shubhlabh Vastu for\na personalised experience."
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="5dp"
+                    android:background="#FF3800" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Register yourself"
+                    android:textSize="28dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:layout_marginBottom="15dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/login_box"
+                    android:padding="20dp"
+                    android:orientation="vertical"
+                    android:layout_marginBottom="10dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:hint="Name"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etName"
+                            style="@style/TextInputEditText"
+                            android:inputType="textPersonName" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:hint="Mobile No"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etMobile"
+                            style="@style/TextInputEditText"
+                            android:digits="1234567890"
+                            android:inputType="phone"
+                            android:maxLength="10" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!--<com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:hint="Email"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etEmail"
+                            style="@style/TextInputEditText"
+                            android:inputType="textEmailAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:hint="Password"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etPassword"
+                            style="@style/TextInputEditText"
+                            android:inputType="textPassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/TextInputLayout"
+                        android:hint="Confirm Password"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etConfirmPassword"
+                            style="@style/TextInputEditText"
+                            android:inputType="textVisiblePassword" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.sn.lib.NestedProgress
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:innerAnimInterpolator="linear"
+                        app:outerAnimInterpolator="overshoot"
+                        app:outerLoaderAnimDuration="1500"
+                        android:id="@+id/loader"
+                        android:visibility="gone"/>
+
+                    <Button
+                        android:id="@+id/btnSignUp"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Sign Up"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Already have an account?"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:id="@+id/signin"
+                            android:layout_width="100dp"
+                            android:layout_height="45dp"
+                            android:gravity="center"
+                            android:text="Sign In"
+                            android:textColor="@color/black"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+
+
+
+
+
+
+
+
+                </LinearLayout>
+
+
+
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:text="By signing up, you agree to our Terms &amp; Conditions.\nSee how we use your data in our Privacy Policy"
+                    android:textColor="@color/white"
+                    android:textSize="10dp"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

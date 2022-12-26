@@ -15,6 +15,7 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -43,6 +44,7 @@ public class MainActivity extends BaseActivity {
     private Context context;
     AlertDialog.Builder builder;
     TextView AppVer;
+    ImageView imageView;
 
     @SuppressLint("ResourceType")
     @Override
@@ -65,9 +67,25 @@ public class MainActivity extends BaseActivity {
 
         validate_app_version();
 
+        // Refer the ImageView like this
+        imageView = findViewById(R.id.img_bg);
+        TranslateAnimation animation = new TranslateAnimation(900.0f, 0.0f,
+                0.0f, 0.0f);
+        animation.setDuration(3000);
+        animation.setRepeatCount(0);
+        animation.setRepeatMode(0);
+        animation.setFillAfter(true);
+        imageView.startAnimation(animation);
+
+
+
+
         tv_Appname.setOnClickListener(v -> CommonTask.redirectFinishActivity(this, Intro.class));
 
     }
+
+
+
 
     @SuppressLint("SuspiciousIndentation")
     private void validate_app_version()

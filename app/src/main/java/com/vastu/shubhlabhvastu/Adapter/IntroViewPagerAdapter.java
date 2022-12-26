@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 
 import com.bumptech.glide.Glide;
-import com.vastu.shubhlabhvastu.Model.ScreenItem;
+import com.vastu.shubhlabhvastu.Model.ModelScreenItem;
 import com.vastu.shubhlabhvastu.R;
 
 import java.util.List;
@@ -20,9 +20,9 @@ import java.util.List;
 public class IntroViewPagerAdapter extends PagerAdapter {
 
    Context mContext ;
-   List<ScreenItem> mListScreen;
+   List<ModelScreenItem> mListScreen;
 
-    public IntroViewPagerAdapter(Context mContext, List<ScreenItem> mListScreen) {
+    public IntroViewPagerAdapter(Context mContext, List<ModelScreenItem> mListScreen) {
         this.mContext = mContext;
         this.mListScreen = mListScreen;
     }

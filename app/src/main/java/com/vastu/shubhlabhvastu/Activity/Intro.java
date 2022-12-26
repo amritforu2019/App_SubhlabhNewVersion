@@ -4,7 +4,9 @@ import static com.android.volley.Request.Method.GET;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
@@ -20,8 +22,9 @@ import com.android.volley.toolbox.Volley;
 import com.google.android.material.tabs.TabLayout;
 import com.vastu.shubhlabhvastu.Adapter.IntroViewPagerAdapter;
 import com.vastu.shubhlabhvastu.BaseActivity;
-import com.vastu.shubhlabhvastu.Model.ScreenItem;
+import com.vastu.shubhlabhvastu.Model.ModelScreenItem;
 import com.vastu.shubhlabhvastu.R;
+import com.vastu.shubhlabhvastu.Session.Session;
 import com.vastu.shubhlabhvastu.Task.API;
 import com.vastu.shubhlabhvastu.Task.CommonTask;
 import com.vastu.shubhlabhvastu.Task.ToastType;
@@ -44,7 +47,8 @@ public class Intro extends BaseActivity {
     Animation btnAnim ;
     TextView tvSkip;
     private Context context;
-        List<ScreenItem> mList = new ArrayList<>();
+        List<ModelScreenItem> mList = new ArrayList<>();
+        SharedPreferences pref;
 
     @SuppressLint("ResourceType")
     @Override
@@ -60,10 +64,13 @@ public class Intro extends BaseActivity {
         btnAnim = AnimationUtils.loadAnimation(getApplicationContext(),R.transition.button_animation);
         tvSkip = findViewById(R.id.tv_skip);
         context = getApplicationContext();
+        pref = PreferenceManager.getDefaultSharedPreferences(context);
 
 
         // fill list screen
         getIntroData();
+
+        isSessionCreated();
 
 
         // next button click Listner
@@ -171,7 +178,7 @@ public class Intro extends BaseActivity {
 
                     for (int i = 0; i < data.length(); i++) {
                         JSONObject details = new JSONObject(data.getString(i));
-                        mList.add(new ScreenItem(
+                        mList.add(new ModelScreenItem(
                                 details.getString("title"),
                                 details.getString("summary"),
                                 API.IMAGE_URL_INTRO+details.getString("image")
@@ -184,7 +191,6 @@ public class Intro extends BaseActivity {
                         screenPager.setAdapter(introViewPagerAdapter);
 
                         // setup tablayout with viewpager
-
                         tabIndicator.setupWithViewPager(screenPager);
 
                     /*if(filterKey.equals("all")) {
@@ -227,5 +233,15 @@ public class Intro extends BaseActivity {
                 return map;
             }*/
         });
+    }
+
+    private void isSessionCreated() {
+        Bundle bundle = new Bundle();
+        bundle.putString("from", "Login");
+        //Toasts.makeText(context, "Inside Session", ToastType.SUCCESS);
+
+        if (Session.getIsSession(pref) && Session.getMobileVerified(pref).equals("1"))
+            CommonTask.redirectFinishActivity(Intro.this, Home.class);
+
     }
 }

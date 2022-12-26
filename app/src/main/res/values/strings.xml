@@ -16,6 +16,17 @@
     <string name="menu_sub_refer">Refer our app and earn some exiting offer</string>
     <string name="menu_logout">Logout</string>
     <string name="menu_login_register">Login / Register</string>
+    <string name="email_mobile_no">Mobile Number</string>
+    <string name="title_here">Title Here</string>
+    <string name="todo">TODO</string>
+    <string name="text_here">Text Here</string>
+    <string name="view_our_expert">View Our Expert</string>
+    <string name="name_here">Name Here</string>
+
+
+
+
+    <string name="lipsum">Lorem ipsum dolor sit amet </string>
 
 
 </resources>

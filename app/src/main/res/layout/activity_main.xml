@@ -4,23 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/login_linear_bg"
+       >
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/splash_bg"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop"
+
+
+
+            android:id="@+id/img_bg"/>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:gravity="center|top"
-            android:paddingTop="30dp">
+            android:paddingTop="30dp"
+            android:backgroundTint="@color/primary_text">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -30,7 +38,7 @@
 
             <ImageView
                 android:layout_width="wrap_content"
-                android:layout_height="160dp"
+                android:layout_height="220dp"
                 android:src="@drawable/compas"
                 android:id="@+id/ll_logo"/>
 
@@ -52,12 +60,15 @@
             android:layout_height="58dp"
             android:layout_alignParentBottom="true"
             android:layout_marginHorizontal="40dp"
-            android:layout_marginBottom="30dp"
+
             android:background="@drawable/btn_gradient_style"
             android:insetTop="0dp"
             android:insetBottom="0dp"
             android:text="Get Started"
-            android:textColor="@color/white" />
+            android:textColor="@color/white"
+            android:layout_marginBottom="5dp"/>
+
+
 
 
     </RelativeLayout>

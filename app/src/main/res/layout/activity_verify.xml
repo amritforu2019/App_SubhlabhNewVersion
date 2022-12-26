@@ -1,0 +1,139 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".Activity.Verify"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/bg_register"
+            android:scaleType="centerCrop"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/login_linear_bg"
+            android:padding="20dp"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:text="Mobile Verification"
+                    android:textColor="@color/white"
+                    android:textSize="40dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="Verify your mobile number \nEnter 4 digit code that you have recieved on your Mobile."
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <View
+                    android:layout_width="60dp"
+                    android:layout_height="5dp"
+                    android:background="#FF3800" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="80dp">
+               <!-- <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Enter 4 Digit Code"
+                    android:textSize="28dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+
+                    android:layout_marginBottom="15dp"/>-->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="30dp"
+                    android:layout_marginBottom="150dp"
+                    android:background="@drawable/login_box">
+
+
+
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:hint="Enter 4 Digit Code"
+                        android:textColorHint="@color/black"
+                        app:boxStrokeColor="@color/black"
+                        app:hintTextColor="@color/black">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:inputType="number"
+                            android:textSize="28dp"
+                            android:maxLength="4"
+                            android:textAlignment="center"
+                            android:textColor="@color/black"
+                            android:id="@+id/tv_otp"/>
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <LinearLayout
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginBottom="5dp"
+                        android:background="#AAFFFFFF"
+                        android:gravity="center"
+                        android:visibility="gone">
+
+                        <com.sn.lib.NestedProgress
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:innerAnimInterpolator="linear"
+                            app:outerAnimInterpolator="overshoot"
+                            app:outerLoaderAnimDuration="1500"
+                            android:id="@+id/loader"
+                            android:visibility="gone"/>
+                    </LinearLayout>
+                    <Button
+                        android:id="@+id/btn_continueCode"
+                        android:layout_width="match_parent"
+                        android:layout_height="45dp"
+
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="Continue"
+                        android:textColor="@color/white"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</LinearLayout>

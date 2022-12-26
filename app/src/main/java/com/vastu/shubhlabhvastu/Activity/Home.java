@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -13,6 +14,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,9 +32,13 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.toolbox.HurlStack;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.tabs.TabLayout;
 import com.vastu.shubhlabhvastu.Adapter.AdapterAllExpert;
+import com.vastu.shubhlabhvastu.Adapter.BannerViewPagerAdapter;
+import com.vastu.shubhlabhvastu.Adapter.IntroViewPagerAdapter;
 import com.vastu.shubhlabhvastu.BaseActivity;
 import com.vastu.shubhlabhvastu.Model.ModelAllExpert;
+import com.vastu.shubhlabhvastu.Model.ModelScreenItem;
 import com.vastu.shubhlabhvastu.R;
 import com.vastu.shubhlabhvastu.Session.Session;
 import com.vastu.shubhlabhvastu.Task.API;
@@ -48,6 +54,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Home extends BaseActivity implements Animation.AnimationListener  {
 
@@ -66,7 +74,29 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
     private ArrayList<ModelAllExpert> modelAllExpertpalmistry;
     private ArrayList<ModelAllExpert> modelAllExperttarot;
 
-    RecyclerView rvAstrology,rvVastu,rvVastuKundali,rvPalmistry,rvTarot;
+
+    RecyclerView rvAstrology,rvVastu,rvVastuKundali,rvPalmistry,rvTarot,rvBanner1;
+
+    ////////View Pager Controls////////
+    int currentPage = 0;
+    Timer timer;
+    final long DELAY_MS = 500;//delay in milliseconds before task is to be executed
+    final long PERIOD_MS = 3000; // time in milliseconds between successive task executions.
+
+
+    private ViewPager screen_viewpagerBan1;
+    BannerViewPagerAdapter bannerViewPagerAdapter ;
+    TabLayout tabIndicatorBan1;
+    int position = 0 ;
+    List<ModelScreenItem> mList = new ArrayList<>();
+
+    private ViewPager screen_viewpagerBan2;
+    BannerViewPagerAdapter bannerViewPagerAdapter2 ;
+    TabLayout tabIndicatorBan2;
+    int position2 = 0 ;
+    List<ModelScreenItem> mList2 = new ArrayList<>();
+    ////////View Pager Controls////////
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -152,6 +182,11 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
         tv_more_palmistry=findViewById(R.id.tv_more_palmistry);
         rvTarot=findViewById(R.id.rvTarot);
         tv_more_tarot=findViewById(R.id.tv_more_tarot);
+        ////////View Pager Controls////////
+        tabIndicatorBan1 = findViewById(R.id.tab_indicatorBan1);
+        tabIndicatorBan2 = findViewById(R.id.tab_indicatorBan2);
+        ////////View Pager Controls////////
+
 
         fadeout= AnimationUtils.loadAnimation(context,R.anim.blink);
         fadeout.setAnimationListener(this);
@@ -168,7 +203,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                 //svHome.smoothScrollTo(0, rvAstrology.getTop());
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "astrology");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         ll_vastu.setOnClickListener(new View.OnClickListener() {
@@ -179,7 +214,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                // svHome.smoothScrollTo(0, rvVastu.getTop());
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "vastu");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         ll_kundali.setOnClickListener(new View.OnClickListener() {
@@ -190,7 +225,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                 //svHome.smoothScrollTo(0, rvVastuKundali.getTop());
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "vastu_kundali");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         ll_palm.setOnClickListener(new View.OnClickListener() {
@@ -201,7 +236,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                 //svHome.smoothScrollTo(0, rvPalmistry.getTop());
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "palmistry");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         ll_tarot.setOnClickListener(new View.OnClickListener() {
@@ -211,7 +246,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                  tv_tarot.setTextColor(getResources().getColor(R.color.primary_text));
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "tarot");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         tv_more_astro.setOnClickListener(new View.OnClickListener() {
@@ -219,7 +254,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "astrology");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         tv_more_vastu.setOnClickListener(new View.OnClickListener() {
@@ -227,7 +262,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "vastu");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         tv_more_vastukundali.setOnClickListener(new View.OnClickListener() {
@@ -235,7 +270,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "vastu_kundali");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         tv_more_palmistry.setOnClickListener(new View.OnClickListener() {
@@ -243,7 +278,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "palmistry");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
         tv_more_tarot.setOnClickListener(new View.OnClickListener() {
@@ -251,7 +286,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
             public void onClick(View view) {
                 Bundle bundle = new Bundle();
                 bundle.putString("exp_typ", "tarot");
-                CommonTask.redirectActivity(Home.this, ExpertList.class, bundle);
+                CommonTask.redirectActivity(Home.this, ExpertSummary.class, bundle);
             }
         });
 
@@ -281,7 +316,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                             modelAllExpert.add(new ModelAllExpert(
                                     jsonObject.getString("id"),
                                     jsonObject.getString("t_name"),
-                                    jsonObject.getString("c_typ"),
+                                    jsonObject.getString("c_typ_name"),
                                     jsonObject.getString("image"),
                                     jsonObject.getString("edu_year"),
                                     jsonObject.getString("rating")
@@ -299,7 +334,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                         modelAllExpertvastu.add(new ModelAllExpert(
                                 jsonObjectvastu.getString("id"),
                                 jsonObjectvastu.getString("t_name"),
-                                jsonObjectvastu.getString("c_typ"),
+                                jsonObjectvastu.getString("c_typ_name"),
                                 jsonObjectvastu.getString("image"),
                                 jsonObjectvastu.getString("edu_year"),
                                 jsonObjectvastu.getString("rating")
@@ -316,7 +351,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                         modelAllExpertvastukundali.add(new ModelAllExpert(
                                 jsonObjectvastukundali.getString("id"),
                                 jsonObjectvastukundali.getString("t_name"),
-                                jsonObjectvastukundali.getString("c_typ"),
+                                jsonObjectvastukundali.getString("c_typ_name"),
                                 jsonObjectvastukundali.getString("image"),
                                 jsonObjectvastukundali.getString("edu_year"),
                                 jsonObjectvastukundali.getString("rating")
@@ -332,7 +367,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                         modelAllExpertpalmistry.add(new ModelAllExpert(
                                 jsonObjectpalmistry.getString("id"),
                                 jsonObjectpalmistry.getString("t_name"),
-                                jsonObjectpalmistry.getString("c_typ"),
+                                jsonObjectpalmistry.getString("c_typ_name"),
                                 jsonObjectpalmistry.getString("image"),
                                 jsonObjectpalmistry.getString("edu_year"),
                                 jsonObjectpalmistry.getString("rating")
@@ -349,7 +384,7 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                     modelAllExperttarot.add(new ModelAllExpert(
                     jsonObjecttarot.getString("id"),
                     jsonObjecttarot.getString("t_name"),
-                    jsonObjecttarot.getString("c_typ"),
+                    jsonObjecttarot.getString("c_typ_name"),
                     jsonObjecttarot.getString("image"),
                     jsonObjecttarot.getString("edu_year"),
                     jsonObjecttarot.getString("rating")
@@ -357,6 +392,15 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
                     }
                     rvTarot.setLayoutManager(new LinearLayoutManager(context, RecyclerView.HORIZONTAL, false));
                     rvTarot.setAdapter(new AdapterAllExpert(Home.this, modelAllExperttarot));
+
+
+                    JSONArray jsonArrayBanner1 = jsonRootObject.optJSONArray("banner1");
+                    FillBannerData(jsonArrayBanner1);
+
+                    JSONArray jsonArrayBanner2 = jsonRootObject.optJSONArray("banner2");
+                    FillBannerData2(jsonArrayBanner2);
+
+
 
 
                 } else {
@@ -382,5 +426,132 @@ public class Home extends BaseActivity implements Animation.AnimationListener  {
         });
     }
 
+    ///Get Banner Data from API and fill in Pager//
+    private void FillBannerData(JSONArray data) {
+
+        // tablayout add change listener
+        tabIndicatorBan1.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == mList.size()-1) {
+                }
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
+        mList = new ArrayList<>();
+        try {
+            for (int i = 0; i < data.length(); i++)
+            {
+                JSONObject details = new JSONObject(data.getString(i));
+                    mList.add(new ModelScreenItem(
+                            details.getString("title"),
+                            details.getString("summary"),
+                            API.IMAGE_URL_BANNER+details.getString("image")
+                    ));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // setup viewpager
+        screen_viewpagerBan1 =findViewById(R.id.screen_viewpagerBan1);
+        bannerViewPagerAdapter = new BannerViewPagerAdapter(this,mList);
+        screen_viewpagerBan1.setAdapter(bannerViewPagerAdapter);
+
+        // setup tablayout with viewpager
+        tabIndicatorBan1.setupWithViewPager(screen_viewpagerBan1);
+
+
+        /*After setting the adapter use the timer */
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == data.length()) {
+                    currentPage = 0;
+                }
+                screen_viewpagerBan1.setCurrentItem(currentPage++, true);
+            }
+        };
+
+        timer = new Timer(); // This will create a new Thread
+        timer.schedule(new TimerTask() { // task to be scheduled
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, DELAY_MS, PERIOD_MS);
+
+
+    }
+
+    private void FillBannerData2(JSONArray data) {
+
+        // tablayout add change listener
+        tabIndicatorBan2.addOnTabSelectedListener(new TabLayout.BaseOnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                if (tab.getPosition() == mList2.size()-1) {
+                }
+            }
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+            }
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+            }
+        });
+
+
+        mList2 = new ArrayList<>();
+        try {
+            for (int i = 0; i < data.length(); i++)
+            {
+                JSONObject details = new JSONObject(data.getString(i));
+                mList2.add(new ModelScreenItem(
+                        details.getString("title"),
+                        details.getString("summary"),
+                        API.IMAGE_URL_BANNER+details.getString("image")
+                ));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // setup viewpager
+        screen_viewpagerBan2 =findViewById(R.id.screen_viewpagerBan2);
+        bannerViewPagerAdapter2 = new BannerViewPagerAdapter(this,mList2);
+        screen_viewpagerBan2.setAdapter(bannerViewPagerAdapter2);
+
+        // setup tablayout with viewpager
+        tabIndicatorBan2.setupWithViewPager(screen_viewpagerBan2);
+
+        /*After setting the adapter use the timer */
+        final Handler handler = new Handler();
+        final Runnable Update = new Runnable() {
+            public void run() {
+                if (currentPage == data.length()) {
+                    currentPage = 0;
+                }
+                screen_viewpagerBan2.setCurrentItem(currentPage++, true);
+            }
+        };
+
+        timer = new Timer(); // This will create a new Thread
+        timer.schedule(new TimerTask() { // task to be scheduled
+            @Override
+            public void run() {
+                handler.post(Update);
+            }
+        }, DELAY_MS, PERIOD_MS);
+
+
+    }
 
 }

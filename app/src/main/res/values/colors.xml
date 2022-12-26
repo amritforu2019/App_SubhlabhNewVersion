@@ -21,4 +21,5 @@
 
 
     <color name="redPrimary">#D31204</color>
+    <color name="pageColor">#F5F5F5</color>
 </resources>
