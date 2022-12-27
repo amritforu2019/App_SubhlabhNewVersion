@@ -10,8 +10,11 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -22,6 +25,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.vastu.shubhlabhvastu.Adapter.AdapterAllExpert;
 import com.vastu.shubhlabhvastu.Adapter.AdapterAllExpertFull;
+import com.vastu.shubhlabhvastu.Adapter.AdapterAllExpertSearch;
 import com.vastu.shubhlabhvastu.BaseActivity;
 import com.vastu.shubhlabhvastu.Model.ModelAllExpert;
 import com.vastu.shubhlabhvastu.R;
@@ -37,6 +41,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ExpertList extends BaseActivity {
@@ -48,7 +53,9 @@ public class ExpertList extends BaseActivity {
     private ProgressBar loader;
     private  String exp_typ,title,sort_summary;
     private ArrayList<ModelAllExpert> modelAllExpert;
+    List<ModelAllExpert> filtered = new ArrayList<ModelAllExpert>();
     RecyclerView rvList;
+    private EditText et_head_search;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,11 +64,13 @@ public class ExpertList extends BaseActivity {
         initView();
         intentData();
         filldata();
+        onclickAction();
     }
     @Override
     public void onBackPressed()
     {
-        CommonTask.redirectFinishActivity(ExpertList.this, ExpertSummary.class);
+        this.finish();
+        //CommonTask.redirectFinishActivity(ExpertList.this, ExpertSummary.class);
     }
     private void initView()
     {
@@ -72,6 +81,7 @@ public class ExpertList extends BaseActivity {
         tv_Name = findViewById(R.id.tv_Name);
         tv_Summary = findViewById(R.id.tv_Summary);
         rvList = findViewById(R.id.rvList);
+        et_head_search = findViewById(R.id.et_head_search);
     }
     private void intentData() {
         try {
@@ -142,6 +152,36 @@ public class ExpertList extends BaseActivity {
                 map.put(API.Accept, API.ApplicationJSON);
                 Log.d("param", map.toString());
                 return map;
+            }
+        });
+    }
+    private void onclickAction()
+    {
+        iv_Goback.setOnClickListener(v-> this.finish());
+
+        et_head_search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                if(!charSequence.equals("")) {
+                    filtered.clear();
+                    rvList.setAdapter(new AdapterAllExpertSearch());
+                    for (ModelAllExpert article : modelAllExpert) {
+                        String title=article.getT_name().toLowerCase();
+                        if (title.contains(charSequence.toString().toLowerCase()))
+                            filtered.add(article);
+                    }
+                    rvList.setAdapter(new AdapterAllExpertSearch());
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
             }
         });
     }

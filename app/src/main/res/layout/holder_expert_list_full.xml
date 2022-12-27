@@ -9,30 +9,18 @@
     app:cardElevation="0dp"
 
     android:layout_marginBottom="20dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:background="@drawable/card_style">
+                android:background="@drawable/card_style_1">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/astrouser"
                     android:scaleType="fitEnd"
                     android:id="@+id/ivImage"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/alpha_white_gradient">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/alpha_white_gradient"></LinearLayout>
-                </LinearLayout>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -65,9 +53,9 @@
                 <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="8dp"
+                android:padding="4dp"
                 android:weightSum="8"
-                 android:layout_marginTop="280px">
+                android:layout_alignParentBottom="true">
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -78,7 +66,7 @@
                         android:layout_height="wrap_content"
                         android:text="4.84 rating"
                         android:textColor="#FFB300"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         android:layout_marginBottom="3dp"
                         android:gravity="center_horizontal|center_vertical"
                         android:drawableStart="@drawable/ic_rating"
@@ -89,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:text="24 yrs exp"
                         android:textColor="#1F5A99"
-                        android:textSize="10dp"
+                        android:textSize="12dp"
                         android:gravity="center_vertical|center_horizontal"
                         android:drawableStart="@drawable/ic_experience"
                         android:drawablePadding="5dp"
@@ -104,7 +92,7 @@
                         android:layout_height="35dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        android:backgroundTint="#FCE9E3"
+                        android:backgroundTint="@color/cardButton"
                         android:text="Book Appointment"
                         android:textSize="12dp"
                         android:textColor="#EA5757"
@@ -113,5 +101,5 @@
             </LinearLayout>
             </RelativeLayout>
 
-        </LinearLayout>
+
     </androidx.cardview.widget.CardView>

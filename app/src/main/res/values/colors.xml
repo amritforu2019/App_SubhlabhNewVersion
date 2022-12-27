@@ -7,7 +7,7 @@
     <color name="colorPrimary">#FFFFFFFF</color>
 
 
-    <color name="button_color">#FF2D55</color>
+    <color name="button_color">#FF3800</color>
     <color name="button_color_light">#CBFF2D55</color>
     <color name="red">#680801</color>
     <color name="light_grey">#F8F8F8</color>
@@ -22,4 +22,5 @@
 
     <color name="redPrimary">#D31204</color>
     <color name="pageColor">#F5F5F5</color>
+    <color name="cardButton">#FCE9E3</color>
 </resources>

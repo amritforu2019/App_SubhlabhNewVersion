@@ -473,13 +473,16 @@ public class BaseActivity extends AppCompatActivity {
         return null;
     }
 
-    private void validate_login()
+    public boolean validate_login()
     {
-        if (Session.getStudentId(pref).equals("")) {
-            Toasts.makeText(context, "Session Expired !!! Kindly Login...", ToastType.ERROR);
-            CommonTask.redirectFinishActivity(BaseActivity.this, SignIn.class);
-        }
+        boolean ret=false;
+        if (Session.getIsSession(pref))
+            ret= true;
+        if (!Session.getIsSession(pref))
+            ret= false;
+        return ret;
     }
-
+ /*Toasts.makeText(context, "Session Expired !!! Kindly Login...", ToastType.ERROR);
+            CommonTask.redirectFinishActivity(BaseActivity.this, SignIn.class);*/
 
 }

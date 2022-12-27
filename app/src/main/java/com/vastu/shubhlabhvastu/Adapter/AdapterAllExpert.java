@@ -52,7 +52,7 @@ public class AdapterAllExpert extends RecyclerView.Adapter<AdapterAllExpert.View
         bundle.putString("exp_id",  modelAllExpert.get(position).getId());
 
         holder.itemView.setOnClickListener(v -> CommonTask.redirectActivity(activity, ExpertProfile.class, bundle));
-        holder.btn_App.setOnClickListener(v->CommonTask.redirectActivity(activity, QueryForm.class, bundle));
+        holder.btn_App.setOnClickListener(v->CommonTask.redirectActivity(activity, ExpertProfile.class, bundle));
     }
 
     @Override

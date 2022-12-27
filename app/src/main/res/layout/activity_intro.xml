@@ -24,7 +24,7 @@
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/screen_viewpager"
         android:layout_width="match_parent"
-        android:layout_height="520dp"
+        android:layout_height="500dp"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="5dp"
         android:layout_margin="5dp"
@@ -88,26 +88,19 @@
 
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="right"
-        >
 
-
-    </LinearLayout>
 
 
 
     <Button
-        android:visibility="invisible"
+        android:visibility="gone"
         android:id="@+id/btn_get_started"
         android:layout_width="132dp"
         android:layout_height="wrap_content"
         style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
         android:text="Continue"
         android:textSize="20dp"
+        android:layout_marginTop="-60dp"
         android:layout_gravity="center"
         android:textColor="@color/button_color" />
 

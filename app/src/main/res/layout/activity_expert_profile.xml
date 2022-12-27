@@ -1,15 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ExpertProfile">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Expert Profile"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="46dp" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+
+            android:background="@drawable/card_style_1"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="12"
+                android:gravity="right"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                >
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:padding="4dp"
+                    android:src="@drawable/ic_baseline_close_24_white"
+                    android:layout_weight="2"
+                    android:layout_gravity="right"
+                    android:id="@+id/iv_Goback"
+                    android:contentDescription="@string/todo" />
+
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/astrouser"
+                android:scaleType="fitCenter"
+                android:id="@+id/ivImage"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="-25dp"/>
+
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginBottom="40dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp">
+                    <ProgressBar
+                        android:id="@+id/loader"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="10dp"
+                        android:visibility="visible"
+                        android:indeterminate="true"
+                        android:indeterminateTintMode="src_atop"
+                        android:indeterminateTint="@color/button_color_light"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Name Here"
+                        android:textColor="@color/button_color"
+                        android:textStyle="bold"
+                        android:textSize="24dp"
+                        android:layout_marginTop="5dp"
+
+                        android:textAllCaps="true"
+
+                        android:id="@+id/tv_exp_name"
+                        />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="4.84 rating"
+                        android:textColor="#FFB300"
+                        android:textSize="16dp"
+                        android:layout_marginBottom="3dp"
+                        android:gravity="center_horizontal|center_vertical"
+                        android:drawableStart="@drawable/ic_rating"
+                        android:drawablePadding="5dp"
+                        android:layout_marginTop="25dp"
+                        android:id="@+id/tvRating"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="24 yrs exp"
+                        android:textColor="#1F5A99"
+                        android:textSize="16dp"
+                        android:gravity="center_vertical|center_horizontal"
+                        android:drawableStart="@drawable/ic_experience"
+                        android:drawablePadding="5dp"
+                        android:id="@+id/tvExp"/>
+
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_black"
+                        android:layout_margin="15dp"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/language"
+                        android:drawablePadding="10dp"
+                        android:text="Language Spoken"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Spoken ......"
+                        android:textColor="@color/black"
+                        android:background="@drawable/alpha_gray_gradient"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="30dp"
+                        android:textAllCaps="true"
+                        android:padding="10dp"
+                        android:id="@+id/tvLang"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_black"
+                        android:layout_margin="15dp"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/expertise"
+                        android:drawablePadding="10dp"
+                        android:text="Expertise"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Expertise in......"
+                        android:textColor="@color/black"
+                        android:background="@drawable/alpha_gray_gradient"
+                        android:textSize="14dp"
+                        android:layout_marginLeft="30dp"
+                        android:textAllCaps="true"
+                        android:padding="10dp"
+                        android:id="@+id/tvExpIn"
+                        />
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_black"
+                        android:layout_margin="15dp"></View>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:drawableStart="@drawable/user_profile"
+                        android:drawablePadding="10dp"
+                        android:text="Profile Summary"
+                        android:textColor="@color/black"
+                        android:textSize="20dp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Prifile......"
+                        android:textColor="@color/black"
+                         android:textSize="16dp"
+                        android:layout_marginLeft="30dp"
+
+                        android:padding="10dp"
+                        android:lineHeight="20dp"
+                        android:id="@+id/tvSummary"
+                        />
+
+                </LinearLayout>
+            </ScrollView>
+
+
+            <Button
+                android:id="@+id/btn_GotoForm"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="5dp"
+                android:backgroundTint="@color/button_color"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:text="Book Appointment"
+                android:textColor="@color/white"
+                android:textSize="14dp"
+                android:textStyle="bold" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>

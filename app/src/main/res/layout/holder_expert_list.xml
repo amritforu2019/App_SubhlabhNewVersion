@@ -15,23 +15,19 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
-                android:background="@drawable/card_style">
+                android:background="@drawable/card_style_1">
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:src="@drawable/astrouser"
                     android:scaleType="fitEnd"
                     android:id="@+id/ivImage"/>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@drawable/alpha_white_gradient">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/alpha_white_gradient"></LinearLayout>
-                </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,11 +98,12 @@
                         android:layout_height="35dp"
                         android:insetTop="0dp"
                         android:insetBottom="0dp"
-                        android:backgroundTint="#FCE9E3"
+                        android:backgroundTint="@color/cardButton"
                         android:text="Book Appointment"
                         android:textSize="10dp"
                         android:textColor="#EA5757"
-                        android:id="@+id/btn_App"/>
+                        android:id="@+id/btn_App"
+                        android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>

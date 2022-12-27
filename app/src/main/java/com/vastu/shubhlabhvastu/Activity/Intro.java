@@ -126,12 +126,7 @@ public class Intro extends BaseActivity {
         btnGetStarted.setOnClickListener(v -> CommonTask.redirectFinishActivity(this, Home.class));
 
         // skip button click listener
-        tvSkip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                screenPager.setCurrentItem(mList.size());
-            }
-        });
+        tvSkip.setOnClickListener(v-> CommonTask.redirectFinishActivity(this, Home.class));
     }
 
     // show the GETSTARTED Button and hide the indicator and the next button
@@ -139,7 +134,7 @@ public class Intro extends BaseActivity {
         btnNext.setVisibility(View.INVISIBLE);
         btn_prev.setVisibility(View.INVISIBLE);
         btnGetStarted.setVisibility(View.VISIBLE);
-        tvSkip.setVisibility(View.INVISIBLE);
+        //tvSkip.setVisibility(View.INVISIBLE);
         //tabIndicator.setVisibility(View.INVISIBLE);
         // TODO : ADD an animation the getstarted button
         // setup animation
