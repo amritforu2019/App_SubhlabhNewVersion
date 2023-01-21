@@ -12,8 +12,15 @@ import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class Validate {
     public static String fillString(String data, EditText editText) {
+        editText.setText(data.equals("null") || data.equals(null) || data.equals("") ? "" : data);
+        return data;
+    }
+
+    public static String fillString(String data, TextInputEditText editText) {
         editText.setText(data.equals("null") || data.equals(null) || data.equals("") ? "" : data);
         return data;
     }

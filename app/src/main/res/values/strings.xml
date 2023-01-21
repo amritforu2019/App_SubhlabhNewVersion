@@ -24,9 +24,12 @@
     <string name="name_here">Name Here</string>
 
 
-
-
     <string name="lipsum">Lorem ipsum dolor sit amet </string>
+    <string name="CallyouSortly">Give us your true details and we shall reach out to you directly via call in the next hour.👍</string>
+    <string name="fill_in_your_information">Fill in your information</string>
+    <string name="enter_email_address">ENTER EMAIL ADDRESS</string>
+    <string name="package_summary">Package Summary</string>
+    <string name="marquee_txt">Scan QR Code Pay now and fill Transaction No. / Reference No. / UPI Transaction Id for Payment and submit the Query Form</string>
 
 
 </resources>

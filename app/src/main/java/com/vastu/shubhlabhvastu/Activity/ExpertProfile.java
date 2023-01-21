@@ -49,7 +49,7 @@ public class ExpertProfile extends BaseActivity {
     private Button btn_GotoForm;
     private SharedPreferences pref;
     private ProgressBar loader;
-    private  String exp_id,sort_summary,title;
+    private  String exp_id,exp_typ_name,title,exp_typ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -112,11 +112,14 @@ public class ExpertProfile extends BaseActivity {
                     JSONObject data = new JSONObject(response.getString("detail"));
 
                     tv_exp_name.setText(data.getString("t_name"));
+                    title=(data.getString("t_name"));
                     tvRating.setText(data.getString("rating"));
                     tvRating.setText(data.getString("rating")+" Star Rating");
                     tvExp.setText(data.getString("edu_year")+" Yrs Exp");
                     tvLang.setText(data.getString("lang"));
                     tvExpIn.setText(data.getString("c_typ_name"));
+                    exp_typ_name=data.getString("c_typ_name");
+                    exp_typ=data.getString("c_typ");
                     tvSummary.setText(data.getString("c_subj"));
 
 
@@ -181,7 +184,8 @@ public class ExpertProfile extends BaseActivity {
             Bundle bundle = new Bundle();
             bundle.putString("exp_id", exp_id);
             bundle.putString("title", title);
-            bundle.putString("sort_summary", sort_summary);
+            bundle.putString("exp_typ", exp_typ);
+            bundle.putString("exp_typ_name", exp_typ_name);
             CommonTask.redirectFinishActivity(ExpertProfile.this, QueryForm.class, bundle);
         }
         else

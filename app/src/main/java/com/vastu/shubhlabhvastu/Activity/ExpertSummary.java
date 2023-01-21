@@ -101,10 +101,12 @@ public class ExpertSummary extends BaseActivity {
                 }
 
                 if (response.getString("status").equals("1")) {
+                    JSONObject data = new JSONObject(response.getString("detail"));
+
                     if(test_alert) {
                         Toasts.makeText(context, response.getString("messege"), ToastType.SUCCESS);
+                        Toasts.makeText(context,API.IMG_URL_PAGE+data.getString("image"), ToastType.SUCCESS);
                     }
-                    JSONObject data = new JSONObject(response.getString("detail"));
 
                     tv_Name.setText(data.getString("t_name"));
                     tv_GotoList.setText("View Our "+data.getString("t_name"));

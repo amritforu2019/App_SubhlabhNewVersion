@@ -33,6 +33,10 @@ public class AdapterAllExpertSearch extends RecyclerView.Adapter<AdapterAllExper
         this.modelAllExpert = modelAllExpert;
     }
 
+    public AdapterAllExpertSearch() {
+
+    }
+
     @Override
     public AdapterAllExpertSearch.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         return new ViewHolder(LayoutInflater.from(activity).inflate(R.layout.holder_expert_list, parent, false));

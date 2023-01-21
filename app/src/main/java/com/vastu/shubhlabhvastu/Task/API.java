@@ -20,5 +20,7 @@ public interface API {
     String DASHBOARD = BASE_URL + "dashboard";
     String PAGE = BASE_URL + "page";
     String EXPERT = BASE_URL + "expert";
+    String PACKAGELIST = BASE_URL + "query?GET-TYPE=PACKAGE";
+    String SAVEQUERY = BASE_URL + "query";
 
 }

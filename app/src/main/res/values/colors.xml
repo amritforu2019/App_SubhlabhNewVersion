@@ -23,4 +23,5 @@
     <color name="redPrimary">#D31204</color>
     <color name="pageColor">#F5F5F5</color>
     <color name="cardButton">#FCE9E3</color>
+    <color name="green">#4CAF50</color>
 </resources>

@@ -74,9 +74,7 @@ public class BaseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_base);
-
         context = getApplicationContext();
-
         pref = PreferenceManager.getDefaultSharedPreferences(context);
 
         contentView = findViewById(R.id.content);
