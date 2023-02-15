@@ -96,6 +96,7 @@ public class QueryForm extends BaseActivity {
     LinearLayout ILPackage;
     Button btn_GotoForm;
     private String exp_id,title,exp_typ,exp_typ_name,package_id,packagePrice,qr_ref_no,QrText;
+    Uri payUrl;
 
     //
 
@@ -297,18 +298,36 @@ public class QueryForm extends BaseActivity {
 
                     ILPackage.setVisibility(View.VISIBLE);
 
+
+
                     //avsconsulting540@okaxis
-                    QrText="upi://pay?pa=avsconsulting540@okaxis&mc=0000&pn=AVS consultancy services&am="+packagePrice+"&tn="+qr_ref_no+"&cu=INR&mc=null";
+                    QrText="upi://pay?pa=9695639782@okbizaxis&pn=Dev India IT Services&am="+packagePrice+"&tn="+qr_ref_no+"&cu=INR&mc=null&mcc=BCR2DN4TZTQY3TSH";
+
+                    payUrl = new Uri.Builder()
+                            .scheme("upi")
+                            .authority("pay")
+                            .appendQueryParameter("pa", "9695639782@okbizaxis")
+                            .appendQueryParameter("pn", "Dev India IT Services")
+                            .appendQueryParameter("mc", "null")
+                            .appendQueryParameter("tid", qr_ref_no)
+                            .appendQueryParameter("mcc", "BCR2DN4TZTQY3TSH")
+                            .appendQueryParameter("tr", qr_ref_no)
+                            .appendQueryParameter("tn", "Subhlabh")
+                            .appendQueryParameter("am", packagePrice+".00")
+                            .appendQueryParameter("cu", "INR")
+                            /*.appendQueryParameter("url", "")*/
+                            .build();
+
                     if(test_alert)
                     {
-                        Toasts.makeText(context, QrText, ToastType.SUCCESS);
-                        Log.d("QrText", QrText);
+                        Toasts.makeText(context, payUrl.toString(), ToastType.SUCCESS);
+                        Log.d("QrText", payUrl.toString());
                     }
-                    Log.d("QrText", QrText);
+                    Log.d("QrText", payUrl.toString());
                     //initializing MultiFormatWriter for QR code
                     MultiFormatWriter mWriter = new MultiFormatWriter();            try {
                     //BitMatrix class to encode entered text and set Width & Height
-                    BitMatrix mMatrix = mWriter.encode(QrText, BarcodeFormat.QR_CODE, 400,400);
+                    BitMatrix mMatrix = mWriter.encode(payUrl.toString(), BarcodeFormat.QR_CODE, 400,400);
                     BarcodeEncoder mEncoder = new BarcodeEncoder();
                     Bitmap mBitmap = mEncoder.createBitmap(mMatrix);//creating bitmap of code
                     imageCode.setImageBitmap(mBitmap);//Setting generated QR code to imageView                // to hide the keyboard
@@ -361,11 +380,11 @@ public class QueryForm extends BaseActivity {
 
         iv_Goback.setOnClickListener(v-> this.finish());
 
-
         tv_qr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                payUsingUpi("AVS consultancy services","avsconsulting540@okaxis",package_id,packagePrice,qr_ref_no);
+                //payUsingUpi("AVS consultancy services","avsconsulting540@okaxis",package_id,packagePrice,qr_ref_no);
+                payUsingUpi();
             }
         });
 
@@ -374,21 +393,20 @@ public class QueryForm extends BaseActivity {
     }
 
     final int UPI_PAYMENT = 0;
-    void payUsingUpi(  String name,String upiId, String note, String amount, String tid) {
-        Log.e("main ", "name "+name +"--up--"+upiId+"--"+ note+"--"+amount);
-        Uri uri = Uri.parse("upi://pay").buildUpon()
-                .appendQueryParameter("pa", upiId)
-                .appendQueryParameter("pn", name)
-                //.appendQueryParameter("mc", "")
-                .appendQueryParameter("tid", tid)
-                //.appendQueryParameter("tr", "25584584")
-                .appendQueryParameter("tn", note)
-                .appendQueryParameter("am", amount)
-                .appendQueryParameter("cu", "INR")
-                //.appendQueryParameter("refUrl", "blueapp")
-                .build();
+    void payUsingUpi(  ) {
+
+        //QrText="upi://pay?pa="+upiId+"&pn="+name+"&am="+amount+"&tn="+tid+"&cu=INR&mc="+mc_code+"";
+
+
+
+
+        if(test_alert)
+        {
+            Toasts.makeText(context, payUrl.toString().toString(), ToastType.SUCCESS);
+            Log.d("QrText_byQuick", payUrl.toString().toString());
+        }
         Intent upiPayIntent = new Intent(Intent.ACTION_VIEW);
-        upiPayIntent.setData(uri);
+        upiPayIntent.setData(payUrl);
         // will always show a dialog to user to choose an app
         Intent chooser = Intent.createChooser(upiPayIntent, "Pay with");
         // check if intent resolves

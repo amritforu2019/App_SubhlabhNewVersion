@@ -64,7 +64,7 @@ public class BaseActivity extends AppCompatActivity {
     private Context context;
     private TextView tvName, tvEmail,tvMobile,menu_app_version,txt_welcome,txt_name;
     //public CircleImageView imageView;
-    public Boolean test_alert=false;
+    public Boolean test_alert=true;
     LinearLayout contentView;
 
     static final float END_SCALE = 0.1f;
